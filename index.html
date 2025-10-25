@@ -101,41 +101,110 @@
     <section class="spacer" aria-hidden="true"></section>
 
     <!-- BLOK 3: RSVP (posílá na /api/rsvp přes fetch) -->
-    <section id="blok-rsvp" class="block card">
-      <div class="block__inner">
-        <header class="block__head">
-          <h2>Potvrzení účasti (RSVP)</h2>
-          <p class="lead">Prosíme o potvrzení účasti do <strong>30. dubna 2026</strong>.</p>
-        </header>
-        <form id="rsvp-form" class="form" action="/api/rsvp" method="post">
-          <div class="form__row">
-            <label>Jméno a příjmení</label>
-            <input id="f-name" name="name" required placeholder="Vaše jméno" />
-          </div>
-          <div class="form__row">
-            <label>Počet osob</label>
-            <input id="f-people" name="people" type="number" min="1" placeholder="1" />
-          </div>
-          <div class="form__row">
-            <label>E-mail</label>
-            <input id="f-email" name="email" type="email" required placeholder="vas@email.cz" />
-          </div>
-          <div class="form__row form__row--full">
-            <label>Stravovací omezení / alergie / vzkaz</label>
-            <textarea id="f-note" name="note" rows="3" placeholder="Alergie, bezlepkové..."></textarea>
-          </div>
-          <div id="rsvp-msg" class="form__msg" aria-live="polite" style="display:none;"></div>
-          <button class="btn primary" type="submit">Odeslat</button>
-        </form>
+   <section id="blok-rsvp" class="block card">
+  <div class="block__inner">
+    <header class="block__head">
+      <h2>Potvrzení účasti (RSVP)</h2>
+      <p class="lead">Prosíme o potvrzení účasti do <strong>30. dubna 2026</strong>.</p>
+    </header>
+
+    <!-- Info k fotce přes WhatsApp (jen odkaz) -->
+    <div class="note-whatsapp" style="background:#f0fdf4;border:1px solid #d1fae5;color:#065f46;padding:10px 14px;border-radius:12px;margin-bottom:12px;">
+      Máme společnou fotku? Budeme rádi, když nám ji pošlete přes WhatsApp 🙏
+      <!-- 👉 nahraďte číslo (bez mezer, bez +) -->
+      <a href="https://wa.me/420777000000" target="_blank" rel="noreferrer" style="font-weight:700;color:#065f46;text-decoration:underline;">Odeslat na WhatsApp</a>
+    </div>
+
+    <form id="rsvp-form" class="form" action="/api/rsvp" method="post">
+      <div class="form__row">
+        <label>Jméno a příjmení</label>
+        <input id="f-name" name="name" required placeholder="Vaše jméno" />
       </div>
-    </section>
-  </main>
 
-  <footer class="footer" aria-label="Patička">
-    <p>&copy; 2026 Jana &amp; Michal — Svatba na statku v Okřesaneči</p>
-  </footer>
+      <div class="form__row">
+        <label>Počet osob</label>
+        <input id="f-people" name="people" type="number" min="1" placeholder="1" />
+      </div>
 
-    <section class="spacer" aria-hidden="true"></section>
+      <div class="form__row">
+        <label>E-mail</label>
+        <input id="f-email" name="email" type="email" required placeholder="vas@email.cz" />
+      </div>
+
+      <div class="form__row form__row--full">
+        <label>Stravovací omezení / alergie / vzkaz</label>
+        <textarea id="f-note" name="note" rows="3" placeholder="Alergie, bezlepkové..."></textarea>
+      </div>
+
+      <!-- ANO/NE: odvoz -->
+      <div class="form__row">
+        <label>Chci odvoz</label>
+        <div class="radio-row" style="display:flex;gap:14px;">
+          <label><input type="radio" name="ride" value="ANO"> ANO</label>
+          <label><input type="radio" name="ride" value="NE" checked> NE</label>
+        </div>
+      </div>
+
+      <!-- ANO/NE: přespání -->
+      <div class="form__row">
+        <label>Chci přespat</label>
+        <div class="radio-row" style="display:flex;gap:14px;">
+          <label><input type="radio" name="sleep" value="ANO"> ANO</label>
+          <label><input type="radio" name="sleep" value="NE" checked> NE</label>
+        </div>
+      </div>
+
+      <div id="rsvp-msg" class="form__msg" aria-live="polite" style="display:none;"></div>
+      <button class="btn primary" type="submit">Odeslat</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  // Odeslání RSVP jako JSON (žádné soubory)
+  (function(){
+    const form = document.getElementById("rsvp-form");
+    const msg  = document.getElementById("rsvp-msg");
+    if(!form) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      msg.style.display = "none";
+
+      const payload = {
+        name:   document.getElementById("f-name").value.trim(),
+        people: document.getElementById("f-people").value,
+        email:  document.getElementById("f-email").value.trim(),
+        note:   document.getElementById("f-note").value.trim(),
+        ride:   (form.querySelector('input[name="ride"]:checked')?.value || "NE"),
+        sleep:  (form.querySelector('input[name="sleep"]:checked')?.value || "NE"),
+      };
+
+      try {
+        const res  = await fetch("/api/rsvp", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          msg.textContent = "Děkujeme! Vaše potvrzení bylo odesláno.";
+          msg.className = "form__msg ok";
+          msg.style.display = "block";
+          form.reset();
+        } else {
+          throw new Error(data?.error || "Chyba při odesílání.");
+        }
+      } catch (err) {
+        console.error(err);
+        msg.textContent = "Omlouváme se, zprávu se nepodařilo odeslat. Zkuste to prosím znovu.";
+        msg.className = "form__msg err";
+        msg.style.display = "block";
+      }
+    });
+  })();
+</script>
+
 
     <!-- BLOK 4: Doprava a rozvozy -->
     <section id="blok-doprava" class="block card">
