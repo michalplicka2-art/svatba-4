@@ -72,6 +72,9 @@ h2{font-family:"Playfair Display",serif;font-size:34px;margin:0 0 8px}
   transform: translateY(-1px);
   transition: all 0.15s ease;
 }
+.btn:not(.primary):hover {
+  background: #f1f5f3;
+}
 
 
 /* Harmonogram */
