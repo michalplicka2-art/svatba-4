@@ -62,8 +62,17 @@ h2{font-family:"Playfair Display",serif;font-size:34px;margin:0 0 8px}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid #e5e7eb;text-decoration:none;color:#1f2937;background:#fff;box-shadow:var(--shadow)}
 .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
-.btn:hover{transform:translateY(-1px);transition:transform .15s ease}
-.btn.primary:hover{filter:brightness(0.96)}
+.btn:hover {
+  transform: translateY(-1px);
+  transition: all 0.15s ease;
+}
+
+.btn.primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  transition: all 0.15s ease;
+}
+
 
 /* Harmonogram */
 .timeline{display:grid;gap:12px;margin-top:8px}
