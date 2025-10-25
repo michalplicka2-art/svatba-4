@@ -4,30 +4,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jana & Michal – Svatba</title>
-  <meta name="description" content="Svatba Jany a Michala – Statek U nás, Okřesaneč. Místo, harmonogram a RSVP.">
+  <meta name="description" content="Svatba Jany a Michala – Statek U nás, Okřesaneč. Místo, harmonogram, RSVP a rozvozy.">
+
+  <!-- Fonty -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
   <!-- Leaflet map (CSS + JS) -->
-<link rel="stylesheet"href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <!-- Váš styl -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- HERO s fotkou -->
-  <header class="hero" id="uvod" aria-label="Úvodní sekce s pozadím">
+  <!-- HERO -->
+  <header class="hero" id="uvod">
     <div class="hero__overlay"></div>
     <div class="hero__head">
       <h1 class="names">Jana <span>&</span> Michal</h1>
 
       <!-- Úvodní text v zelené bublině -->
-<div class="intro-bubble">
-  Srdečně vás zveme, abyste s námi prožili náš velký den plný lásky, smíchu a tance 💚
-</div>
+      <div class="intro-bubble">
+        Srdečně vás zveme, abyste s námi prožili náš velký den plný lásky, smíchu a tance 💚
+      </div>
 
-
-
-      <!-- Odpočítávání pod jmény -->
+      <!-- Odpočítávání -->
       <div class="countdown-bubble" data-target="2026-05-30T12:00:00+02:00">
         <span><span id="dny">--</span> dní</span>
         <span><span id="hodiny">--</span> hod</span>
@@ -35,57 +47,40 @@
         <span><span id="vteriny">--</span> s</span>
       </div>
 
-      <!-- Bublina s datem/časem/místem -->
+      <!-- Datum a místo -->
       <div class="chip chip--main">30. května 2026 • 12:00 • Statek U nás, Okřesaneč</div>
 
+      <!-- Navigační bubliny -->
       <div class="hero__nav">
-  <a class="btn primary" href="#blok-misto">Místo</a>
-  <a class="btn primary" href="#blok-program">Harmonogram</a>
-  <a class="btn primary" href="#blok-rsvp">RSVP</a>
-</div>
+        <a class="btn primary" href="#blok-misto">Místo</a>
+        <a class="btn primary" href="#blok-program">Harmonogram</a>
+        <a class="btn primary" href="#blok-rsvp">RSVP</a>
+      </div>
     </div>
   </header>
 
-  <!-- BLOKY NA STEJNÉM POZADÍ, POSOUVÁ UŽIVATEL -->
   <main class="stack">
-    <!-- BLOK 1: Místo + menší mapka vpravo -->
+    <!-- BLOK 1: Místo -->
     <section id="blok-misto" class="block card">
       <div class="block__inner">
         <header class="block__head">
           <h2>Místo konání</h2>
           <p class="lead">Statek U nás, <strong>Okřesaneč</strong> (Kutná Hora). Ubytování přímo na statku.</p>
         </header>
+
         <div class="columns columns--place">
           <div class="col col--text">
-            <p><strong>Statek U nás</strong><br>Okřesaneč (Kutná Hora)</p>
+            <p><strong>Statek U nás</strong><br>Okřesaneč 12, Kutná Hora</p>
             <ul class="list">
               <li>Autem: Kutná Hora → 15–20 min.</li>
               <li>Vlak: Praha → Kutná Hora hl.n. (~1 h), zajistíme svoz.</li>
               <li>Parkování: přímo u statku.</li>
             </ul>
-            <div class="actions">
-              <a class="btn primary" target="_blank" rel="noreferrer" href="https://mapy.cz/zakladni?q=Statek%20U%20n%C3%A1s%20Ok%C5%99esane%C4%8D">Navigace (Mapy.cz)</a>
-              <a class="btn" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&query=Statek%20U%20n%C3%A1s%20Ok%C5%99esane%C4%8D">Google Maps</a>
-            </div>
           </div>
-          <div class="col col--map">
-  <div class="map-clean map-box">
-    <div id="map" style="width:100%;height:100%;border-radius:16px;"></div>
-  </div>
-</div>
 
-               <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" class="map-svg">
-                <defs>
-                  <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0" stop-color="#eef8ef"/>
-                    <stop offset="1" stop-color="#f7fdf7"/>
-                  </linearGradient>
-                </defs>
-                <rect width="400" height="260" fill="url(#g)"/>
-                <circle cx="200" cy="130" r="6" fill="#3b7a57"/>
-                <text x="200" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#204e37">Statek U nás</text>
-                <text x="200" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2e6447">Okřesaneč</text>
-              </svg>
+          <div class="col col--map">
+            <div class="map-clean map-box">
+              <div id="map" class="leaflet-host"></div>
             </div>
           </div>
         </div>
@@ -94,13 +89,11 @@
 
     <section class="spacer" aria-hidden="true"></section>
 
-    <!-- BLOK 2: Harmonogram bez časů -->
+    <!-- BLOK 2: Harmonogram -->
     <section id="blok-program" class="block card">
       <div class="block__inner">
-        <header class="block__head">
-          <h2>Harmonogram dne</h2>
-          <p class="lead">Aby to bylo bez stresu, necháváme časy volné. Postupně spolu všechno prožijeme.</p>
-        </header>
+        <h2>Harmonogram dne</h2>
+        <p class="lead">Aby to bylo bez stresu, necháváme časy volné. Postupně spolu všechno prožijeme.</p>
         <div class="timeline">
           <div class="item"><div class="title">Obřad na dvoře</div><div class="desc">Přijďte s úsměvem a dobrou náladou.</div></div>
           <div class="item"><div class="title">Přípitek & focení</div><div class="desc">Sklenička a společné fotky.</div></div>
@@ -114,147 +107,82 @@
 
     <section class="spacer" aria-hidden="true"></section>
 
-    <!-- BLOK 3: RSVP (posílá na /api/rsvp přes fetch) -->
-   <section id="blok-rsvp" class="block card">
-  <div class="block__inner">
-    <header class="block__head">
-      <h2>Potvrzení účasti (RSVP)</h2>
-      <p class="lead">Prosíme o potvrzení účasti do <strong>30. dubna 2026</strong>.</p>
-    </header>
+    <!-- BLOK 3: RSVP -->
+    <section id="blok-rsvp" class="block card">
+      <div class="block__inner">
+        <header class="block__head">
+          <h2>Potvrzení účasti (RSVP)</h2>
+          <p class="lead">Prosíme o potvrzení účasti do <strong>30. dubna 2026</strong>.</p>
+        </header>
 
-    <!-- Info k fotce přes WhatsApp (jen odkaz) -->
-    <div class="note-whatsapp" style="background:#f0fdf4;border:1px solid #d1fae5;color:#065f46;padding:10px 14px;border-radius:12px;margin-bottom:12px;">
-      Máme společnou fotku? Budeme rádi, když nám ji pošlete přes WhatsApp 🙏
-      <!-- 👉 nahraďte číslo (bez mezer, bez +) -->
-      <a href="https://wa.me/420777000000" target="_blank" rel="noreferrer" style="font-weight:700;color:#065f46;text-decoration:underline;">Odeslat na WhatsApp</a>
-    </div>
-
-    <form id="rsvp-form" class="form" action="/api/rsvp" method="post">
-      <div class="form__row">
-        <label>Jméno a příjmení</label>
-        <input id="f-name" name="name" required placeholder="Vaše jméno" />
-      </div>
-
-      <div class="form__row">
-        <label>Počet osob</label>
-        <input id="f-people" name="people" type="number" min="1" placeholder="1" />
-      </div>
-
-      <div class="form__row">
-        <label>E-mail</label>
-        <input id="f-email" name="email" type="email" required placeholder="vas@email.cz" />
-      </div>
-
-      <div class="form__row form__row--full">
-        <label>Stravovací omezení / alergie / vzkaz</label>
-        <textarea id="f-note" name="note" rows="3" placeholder="Alergie, bezlepkové..."></textarea>
-      </div>
-
-      <!-- ANO/NE: odvoz -->
-      <div class="form__row">
-        <label>Chci odvoz</label>
-        <div class="radio-row" style="display:flex;gap:14px;">
-          <label><input type="radio" name="ride" value="ANO"> ANO</label>
-          <label><input type="radio" name="ride" value="NE" checked> NE</label>
+        <div class="note-whatsapp" style="background:#f0fdf4;border:1px solid #d1fae5;color:#065f46;padding:10px 14px;border-radius:12px;margin-bottom:12px;">
+          Máme společnou fotku? Budeme rádi, když nám ji pošlete přes WhatsApp 🙏
+          <a href="https://wa.me/420777000000" target="_blank" rel="noreferrer" style="font-weight:700;color:#065f46;text-decoration:underline;">Odeslat na WhatsApp</a>
         </div>
+
+        <form id="rsvp-form" class="form" action="/api/rsvp" method="post">
+          <div class="form__row">
+            <label>Jméno a příjmení</label>
+            <input id="f-name" name="name" required placeholder="Vaše jméno" />
+          </div>
+
+          <div class="form__row">
+            <label>Počet osob</label>
+            <input id="f-people" name="people" type="number" min="1" placeholder="1" />
+          </div>
+
+          <div class="form__row">
+            <label>E-mail</label>
+            <input id="f-email" name="email" type="email" required placeholder="vas@email.cz" />
+          </div>
+
+          <div class="form__row form__row--full">
+            <label>Stravovací omezení / alergie / vzkaz</label>
+            <textarea id="f-note" name="note" rows="3" placeholder="Alergie, bezlepkové..."></textarea>
+          </div>
+
+          <div class="form__row">
+            <label>Chci odvoz</label>
+            <div class="radio-row" style="display:flex;gap:14px;">
+              <label><input type="radio" name="ride" value="ANO"> ANO</label>
+              <label><input type="radio" name="ride" value="NE" checked> NE</label>
+            </div>
+          </div>
+
+          <div class="form__row">
+            <label>Chci přespat</label>
+            <div class="radio-row" style="display:flex;gap:14px;">
+              <label><input type="radio" name="sleep" value="ANO"> ANO</label>
+              <label><input type="radio" name="sleep" value="NE" checked> NE</label>
+            </div>
+          </div>
+
+          <div id="rsvp-msg" class="form__msg" aria-live="polite" style="display:none;"></div>
+          <button class="btn primary" type="submit">Odeslat</button>
+        </form>
       </div>
+    </section>
 
-      <!-- ANO/NE: přespání -->
-      <div class="form__row">
-        <label>Chci přespat</label>
-        <div class="radio-row" style="display:flex;gap:14px;">
-          <label><input type="radio" name="sleep" value="ANO"> ANO</label>
-          <label><input type="radio" name="sleep" value="NE" checked> NE</label>
-        </div>
-      </div>
-
-      <div id="rsvp-msg" class="form__msg" aria-live="polite" style="display:none;"></div>
-      <button class="btn primary" type="submit">Odeslat</button>
-    </form>
-  </div>
-</section>
-
-<script>
-  // Odeslání RSVP jako JSON (žádné soubory)
-  (function(){
-    const form = document.getElementById("rsvp-form");
-    const msg  = document.getElementById("rsvp-msg");
-    if(!form) return;
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      msg.style.display = "none";
-
-      const payload = {
-        name:   document.getElementById("f-name").value.trim(),
-        people: document.getElementById("f-people").value,
-        email:  document.getElementById("f-email").value.trim(),
-        note:   document.getElementById("f-note").value.trim(),
-        ride:   (form.querySelector('input[name="ride"]:checked')?.value || "NE"),
-        sleep:  (form.querySelector('input[name="sleep"]:checked')?.value || "NE"),
-      };
-
-      try {
-        const res  = await fetch("/api/rsvp", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json();
-        if (res.ok && data.ok) {
-          msg.textContent = "Děkujeme! Vaše potvrzení bylo odesláno.";
-          msg.className = "form__msg ok";
-          msg.style.display = "block";
-          form.reset();
-        } else {
-          throw new Error(data?.error || "Chyba při odesílání.");
-        }
-      } catch (err) {
-        console.error(err);
-        msg.textContent = "Omlouváme se, zprávu se nepodařilo odeslat. Zkuste to prosím znovu.";
-        msg.className = "form__msg err";
-        msg.style.display = "block";
-      }
-    });
-  })();
-</script>
-</section> <!-- konec blok-rsvp -->
-<section class="spacer" aria-hidden="true"></section>
-
+    <section class="spacer" aria-hidden="true"></section>
 
     <!-- BLOK 4: Doprava a rozvozy -->
     <section id="blok-doprava" class="block card">
       <div class="block__inner">
-        <header class="block__head">
-          <h2>Doprava a rozvozy</h2>
-          <p class="lead">Aby si každý mohl večer užít bez starostí 🍾</p>
-        </header>
-
-        <div class="columns">
-          <div class="col col--text">
-            <p>
-              Po skončení svatební oslavy bude zajištěn <strong>rozvoz hostů taxíkem</strong> do okolních obcí 
-              (Kutná Hora, Čáslav, Ledeč nad Sázavou a okolí). 
-            </p>
-            <p>
-              Řidič bude k dispozici během večera a noci — stačí se nahlásit u koordinátorky nebo napsat zprávu na číslo uvedené na místě.
-            </p>
-            <p>
-              Pokud víte už teď, že budete rozvoz potřebovat, můžete nám to napsat přímo do poznámky v sekci <a href="#blok-rsvp" style="color: var(--primary); font-weight: 600;">RSVP</a>.
-            </p>
-          </div>
-          <div class="col col--map">
-            <div class="map-box" style="display:flex;align-items:center;justify-content:center;background:#f3faf5;border:1px solid #e8efe9;border-radius:16px;height:260px;">
-              <span style="color:#3b7a57;font-weight:600;">🚕 Rozvozy zajištěny</span>
-            </div>
-          </div>
-        </div>
+        <h2>Doprava a rozvozy</h2>
+        <p class="lead">Aby si každý mohl večer užít bez starostí 🚕</p>
+        <p>Po skončení svatební oslavy bude zajištěn <strong>rozvoz hostů taxíkem</strong> do okolních obcí (Kutná Hora, Čáslav, Ledeč nad Sázavou a okolí).</p>
+        <p>Řidič bude k dispozici během večera a noci – stačí se nahlásit u koordinátorky nebo napsat zprávu na číslo uvedené na místě.</p>
+        <p>Pokud víte už teď, že budete rozvoz potřebovat, napište nám to do poznámky v sekci <a href="#blok-rsvp" style="color:var(--primary);font-weight:600;">RSVP</a>.</p>
       </div>
     </section>
-   
-  <!-- Skripty: countdown + fetch odeslání formuláře -->
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Jana &amp; Michal — Svatba na statku v Okřesanči</p>
+  </footer>
+
+  <!-- Skript pro odpočítávání -->
   <script>
-    // Countdown
     function initCountdown(){
       const el = document.querySelector('.countdown-bubble');
       if(!el) return;
@@ -277,9 +205,35 @@
       }
       tick(); setInterval(tick, 1000);
     }
+    document.addEventListener('DOMContentLoaded', initCountdown);
+  </script>
 
-    // Form submit -> /api/rsvp (JSON)
-    function initForm(){
+  <!-- Skript pro mapu -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const lat = 49.847724;
+      const lon = 15.469921;
+
+      const mapEl = document.getElementById('map');
+      if (!mapEl) return;
+
+      const map = L.map(mapEl, {
+        zoomControl: true,
+        attributionControl: false
+      });
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+      }).addTo(map);
+
+      map.setView([lat, lon], 15);
+      setTimeout(() => map.invalidateSize(), 300);
+    });
+  </script>
+
+  <!-- Skript pro odesílání RSVP -->
+  <script>
+    (function(){
       const form = document.getElementById("rsvp-form");
       const msg  = document.getElementById("rsvp-msg");
       if(!form) return;
@@ -293,6 +247,8 @@
           people: document.getElementById("f-people").value,
           email:  document.getElementById("f-email").value.trim(),
           note:   document.getElementById("f-note").value.trim(),
+          ride:   (form.querySelector('input[name="ride"]:checked')?.value || "NE"),
+          sleep:  (form.querySelector('input[name="sleep"]:checked')?.value || "NE"),
         };
 
         try {
@@ -317,29 +273,7 @@
           msg.style.display = "block";
         }
       });
-    }
-
-    document.addEventListener('DOMContentLoaded', ()=>{ initCountdown(); initForm(); });
+    })();
   </script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const lat = 49.847724;   // Statek U nás (Okřesaneč 12)
-    const lon = 15.469921;
-
-    // vytvoř mapu
-    const map = L.map('map', {
-      zoomControl: true,
-      attributionControl: false
-    }).setView([lat, lon], 15);
-
-    // dlaždice (OpenStreetMap)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19
-    }).addTo(map);
-    
-    // jistota správného vykreslení po animacích
-    setTimeout(() => { map.invalidateSize(); }, 300);
-  });
-</script>
 </body>
 </html>
