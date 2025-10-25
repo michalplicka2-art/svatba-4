@@ -95,3 +95,25 @@ textarea{resize:vertical}
 
 /* Patička */
 .footer{color:#e2e8f0;background:#0f172a;text-align:center;padding:28px 16px}
+/* Map box už asi máš: šířka/výška „rámečku“ */
+.map-box{
+  width: 400px;
+  height: 260px;
+  border-radius: 16px;
+  border: 1px solid #e8efe9;
+  background: #f3faf5;
+  overflow: hidden;
+  position: relative;       /* DŮLEŽITÉ pro absolutní potomka */
+}
+
+/* Kontejner samotné mapy musí mít 100% rozměr */
+#map.leaflet-host{
+  position: absolute;
+  inset: 0;                 /* = top/right/bottom/left: 0 */
+  width: 100%;
+  height: 100%;
+  z-index: 0;               /* nic ho nepřekryje */
+}
+
+/* pro jistotu: nic polo-průhledného přes mapu */
+.map-clean > * { pointer-events: auto; }
