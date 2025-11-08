@@ -164,3 +164,15 @@ textarea{ resize:vertical }
 @media (max-width:380px){
   .names{ font-size:64px }
 }
+/* --- ROZVOZY --- */
+#blok-doprava .rozvozy-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#blok-doprava .rozvozy-text em {
+  color: #444;
+}
