@@ -55,27 +55,30 @@
   <main class="stack">
     <!-- BLOK 1: Místo -->
     <section id="blok-misto" class="block card">
-      <div class="block__inner">
-        <header class="block__head">
-          <h2>Místo konání</h2>
-        </header>
+  <div class="block__inner">
+    <header class="block__head">
+      <h2>Místo konání</h2>
+      <!-- původní <p class="lead">…</p> odstraněn -->
+    </header>
 
-        <div class="columns columns--place">
-          <div class="col col--text">
-            <p><strong>Statek U nás</strong><br>Okřesaneč 12, Okřesaneč</p>
-            <ul class="list">
-              <li>Parkování: přímo u statku.</li>
-            </ul>
-          </div>
+    <div class="columns columns--place">
+      <div class="col col--text">
+        <p><strong>Statek U nás</strong></p>
+        <ul class="list">
+          <!-- odstraněno: Autem, Vlak -->
+          <li>Parkování: přímo u statku.</li>
+        </ul>
+      </div>
 
-          <div class="col col--map">
-            <div class="map-clean map-box">
-              <div id="map" class="leaflet-host"></div>
-            </div>
-          </div>
+      <div class="col col--map">
+        <div class="map-clean map-box">
+          <div id="map" class="leaflet-host"></div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
 
     <section class="spacer" aria-hidden="true"></section>
 
