@@ -131,7 +131,7 @@ body{
   border-radius:22px;
   box-shadow: var(--shadow);
 }
-.block__inner{ width:min(1100px, 94vw); padding:24px }
+.block__inner{ width:min(800px, 94vw); padding:24px }
 .block__head{ margin-bottom:18px }
 h2{ font-family:"Playfair Display",serif; font-size:34px; margin:0 0 8px }
 .lead{ color:var(--muted); max-width:720px; margin:0 }
