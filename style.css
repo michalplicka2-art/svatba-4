@@ -1,16 +1,16 @@
 :root{
-  /* 👉 změň na vaši fotku (nebo na assets/hero.jpg) */
+  /* 👇 změň na vaši fotku */
   --hero-bg: url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop');
 
-  /* barevná paleta (boho/šalvěj) */
   --bg:#ffffff;
   --text:#2b2f33;
   --muted:#6b7280;
-  --primary:#3b7a57;        /* hlavní zelená */
-  --chip:#e3f2e7;           /* světlá šalvěj */
-  --ring:#d6e9de;
-  --card:#ffffff;
-  --shadow:0 10px 25px rgba(0,0,0,.12);
+
+  /* bílá „glass“ bublina */
+  --bubble-bg: rgba(255,255,255,.24);
+  --bubble-bg-hover: rgba(255,255,255,.36);
+  --bubble-brd: rgba(255,255,255,.4);
+  --shadow: 0 10px 25px rgba(0,0,0,.18);
 }
 
 *{ box-sizing:border-box }
@@ -23,23 +23,17 @@ body{
   line-height:1.7;
 }
 
-/* ===== HERO ===== */
+/* =============== HERO =============== */
 .hero{
   position:relative;
   min-height:100dvh;
-  display:grid;
-  place-items:center;
+  display:grid; place-items:center;
   background:var(--hero-bg) center/cover no-repeat fixed;
 }
-.hero__overlay{
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.52), rgba(0,0,0,.28));
-}
+.hero__overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.52),rgba(0,0,0,.28)) }
 .hero__head{
-  position:relative; z-index:1;
-  text-align:center; color:#fff;
-  padding:24px 16px;
-  display:flex; flex-direction:column; align-items:center; gap:12px;
+  position:relative; z-index:1; text-align:center; color:#fff;
+  padding:24px 16px; display:flex; flex-direction:column; align-items:center; gap:12px;
 }
 .names{
   font-family:'Great Vibes',cursive;
@@ -48,77 +42,43 @@ body{
 }
 @media (min-width:900px){ .names{ font-size:112px } }
 
-/* bubliny */
-/* 🌿 Jednotný vzhled všech bublin v horní části (včetně tlačítek) */
-.intro-bubble,
-.countdown-bubble,
-.chip--main,
-.btn.primary {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.25);  /* průhledná bílá */
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 999px;                   /* oválná bublina */
-  padding: 12px 22px;                     /* stejný jako tlačítka */
-  font-weight: 500;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+/* sjednocené bubliny (intro, countdown, chip, info boxy) */
+.bubble{
+  display:inline-block;
+  background: var(--bubble-bg);
+  color:#fff;
+  border:1px solid var(--bubble-brd);
+  border-radius:999px;
+  padding:12px 22px;
+  text-align:center;
+  text-decoration:none;
+  box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: background 0.3s ease, transform 0.15s ease;
+  transition: background .3s ease, transform .15s ease;
+  text-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+.bubble:hover{ background:var(--bubble-bg-hover); transform: translateY(-1px) }
+
+.countdown-bubble{
+  display:inline-flex; gap:16px; align-items:baseline; font-weight:600;
+}
+.countdown-bubble span span{ font-size:22px; font-weight:700 }
+
+.chip{ font-weight:600 }
+.chip--main{}
+
+/* volnější skleněná „bublina“ (notifikace v RSVP) */
+.bubble--soft{
+  display:block;
+  border-radius:16px;
+  padding:12px 16px;
+  margin-bottom:12px;
 }
 
-/* Hover efekt – jemné zesvětlení a posun */
-.intro-bubble:hover,
-.countdown-bubble:hover,
-.chip--main:hover,
-.btn.primary:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: translateY(-1px);
-}
+/* =============== OBSAH =============== */
+.stack{ background:var(--hero-bg) center/cover no-repeat fixed }
 
-/* Bubliny mají mírný stín pro čitelnost textu */
-.intro-bubble,
-.countdown-bubble,
-.chip--main {
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  font-size: 1.05rem;
-}
-
-/* Časové odpočítávání – zarovnáno do řádku */
-.countdown-bubble {
-  display: inline-flex;
-  gap: 16px;
-  align-items: baseline;
-  font-weight: 600;
-}
-.countdown-bubble span span {
-  font-size: 22px;
-  font-weight: 700;
-}
-
-  padding: 12px 20px;
-  border-radius: 999px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-/* Všechny ostatní bubliny mají sjednocený styl textu */
-.intro-bubble,
-.countdown-bubble,
-.chip--main {
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-}
-
-
-/* ===== OBSAH POD HERO (stejné pozadí) ===== */
-.stack{
-  position:relative;
-  background:var(--hero-bg) center/cover no-repeat fixed;
-}
-
-/* bloky/karty */
 .block{
   min-height:90vh;
   display:grid; place-items:center;
@@ -131,187 +91,74 @@ body{
   border-radius:22px;
   box-shadow: var(--shadow);
 }
-.block__inner{ width:min(800px, 94vw); padding:24px }
+.block__inner{ width:min(1100px,94vw); padding:24px }
 .block__head{ margin-bottom:18px }
 h2{ font-family:"Playfair Display",serif; font-size:34px; margin:0 0 8px }
 .lead{ color:var(--muted); max-width:720px; margin:0 }
+.spacer{ min-height:26vh }
 
-.spacer{ min-height:26vh; background:transparent }
-
-/* sloupce (Místo) */
+/* =============== MÍSTO KONÁNÍ =============== */
 .columns{ display:grid; gap:18px; grid-template-columns:1fr }
 .columns--place{ align-items:start }
 @media (min-width:900px){
   .columns--place{ grid-template-columns:1.3fr .7fr }
 }
-.col--map{ display:flex; justify-content:center }
+.address{ color:var(--muted); margin-top:-4px }
 
-/* mapový box + leaflet host */
+.col--map{ display:flex; justify-content:center; overflow:visible }
 .map-box{
   width:400px; height:260px;
-  border-radius:16px; border:1px solid #e8efe9;
-  background:#f3faf5; overflow:hidden; position:relative;
+  border:none; background:transparent; overflow:hidden; position:relative; box-shadow:none;
+  transform: translate(40px, -35px);      /* posun doprava / nahoru */
+  border-radius:16px;                      /* estetické zaoblení výřezu */
 }
 #map.leaflet-host{ position:absolute; inset:0; width:100%; height:100%; z-index:0 }
-
-/* timeline */
-.timeline{ display:grid; gap:12px; margin-top:8px }
-.item{
-  padding:12px 14px; border-radius:14px;
-  background:#fff; border:1px solid #f1f1f1;
+.leaflet-container{ background:transparent !important }
+@media (max-width:899px){
+  .map-box{ transform: translate(10px,-10px); width:100%; height:220px }
 }
-.item .title{ font-weight:700 }
-.item .desc{ color:var(--muted) }
 
-/* seznam + akce */
-.list{ padding-left:18px }
-.list li{ margin-bottom:6px }
-.actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px }
+/* =============== HARMONOGRAM =============== */
+.timeline.hearts{
+  display:flex; flex-direction:column; gap:16px; margin-top:24px; align-items:center;
+}
+.timeline.hearts .item{
+  width:min(500px,90%);
+  padding:16px 24px;
+  border-radius:20px;
+  background: rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  color:#fff; text-align:center; font-size:1.3rem; font-weight:600;
+  text-shadow:0 1px 3px rgba(0,0,0,.4);
+  transition: background .3s ease, transform .2s ease;
+}
+.timeline.hearts .item:hover{ background:rgba(255,255,255,.35); transform:translateY(-3px) }
 
-/* formulář RSVP */
+/* =============== FORMULÁŘ RSVP =============== */
 .form{ display:grid; gap:12px; margin-top:8px }
 .form__row{ display:flex; flex-direction:column; gap:6px }
 .form__row--full{ grid-column:1/-1 }
-input, textarea{
+input,textarea{
   padding:12px; border:1px solid #e5e7eb;
   border-radius:12px; font:inherit; background:#fff
 }
 textarea{ resize:vertical }
-.radio-row label{ display:flex; align-items:center; gap:6px }
+.radio-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:center }
 .form__msg{ margin:6px 0 0; font-size:14px }
 .form__msg.ok{ color:#166534 }
 .form__msg.err{ color:#b91c1c }
+.wa{ color:#fff; font-weight:700; text-decoration:underline }
+.inlink{ color:#2b2f33; font-weight:600 }
 
-/* patička */
+/* =============== PATIČKA =============== */
 .footer{
-  color:#e2e8f0; background:#0f172a;
-  text-align:center; padding:28px 16px;
+  color:#e2e8f0; background:#0f172a; text-align:center; padding:28px 16px;
 }
 
-/* drobné korekce na menších zařízeních */
+/* drobné úpravy pro malé displeje */
 @media (max-width:380px){
   .names{ font-size:64px }
-  .map-box{ width:100%; height:240px }
-}
-/* jemné posunutí mapy v dlaždici – jen na desktopu */
-@media (min-width: 900px){
-  .columns--place .col--map{ 
-    overflow: visible;                 /* kdyby přesahovala */
-    justify-content: flex-start;       /* lépe reaguje na posun doprava */
-  }
-  .map-box{
-    transform: translate(30px, -40px); /* +X = doprava, -Y = nahoru */
-  }
-}
-/* schovat pozadí a rámeček okolo mapy */
-.map-box{
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* schovat defaultní šedé pozadí samotné mapy (Leaflet) */
-.leaflet-container{
-  background: transparent !important;
-}
-/* --- úprava vzhledu mapy v sekci Místo konání --- */
-
-/* Kontejner mapy */
-.map-box {
-  width: 400px;         /* můžeš upravit na 500px nebo 300px podle vzhledu */
-  height: 260px;        /* výška mapy */
-  border: none;         /* odstraní čtvercový rámeček */
-  background: transparent; /* žádné světlé pozadí */
-  overflow: hidden;
-  position: relative;
-  box-shadow: none;
-  transform: translate(30px, -25px);  /* posune mapu: +X = doprava, -Y = nahoru */
-}
-
-/* Samotná mapa (Leaflet) */
-#map.leaflet-host {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-/* Schová šedé pozadí Leafletu, když se dlaždice načítají */
-.leaflet-container {
-  background: transparent !important;
-}
-
-/* Pro desktop – trochu víc doprava */
-@media (min-width: 900px) {
-  .map-box {
-    transform: translate(40px, -35px);
-  }
-}
-
-/* Pro menší zařízení – menší posun, aby to zůstalo pěkně vycentrované */
-@media (max-width: 899px) {
-  .map-box {
-    transform: translate(10px, -10px);
-    width: 100%;
-    height: 220px;
-  }
-}
-/* --- zjednodušený harmonogram se srdíčky --- */
-.timeline.simple {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.timeline.simple .item {
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: 600;
-  padding: 14px 26px;
-  border-radius: 999px;        /* stejný styl bubliny jako nahoře */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, background 0.3s ease;
-}
-/* --- Harmonogram se srdíčky --- */
-.timeline.hearts {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 24px;
-  align-items: center;
-}
-
-.timeline.hearts .item {
-  width: min(500px, 90%);
-  padding: 16px 24px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  color: #fff;
-  text-align: center;
-  font-size: 1.3rem;
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.timeline.hearts .item:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: translateY(-3px);
-}
-
-.timeline.simple .item:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: translateY(-3px);
 }
