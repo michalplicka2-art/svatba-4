@@ -79,17 +79,21 @@ body{
 /* =============== OBSAH =============== */
 .stack{ background:var(--hero-bg) center/cover no-repeat fixed }
 
-.block{
-  min-height:90vh;
-  display:grid; place-items:center;
-  padding:40px 16px;
+.block {
+  min-height: 90vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 16px;
 }
-.card{
+
+.card {
   backdrop-filter: blur(6px);
   background: rgba(255,255,255,.88);
-  border:1px solid #e9ece8;
-  border-radius:22px;
-  box-shadow: var(--shadow);
+  border: 1px solid #e9ece8;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.18);
+}
+
 }
 .block__inner{ width:min(1100px,94vw); padding:24px }
 .block__head{ margin-bottom:18px }
