@@ -200,6 +200,6 @@ textarea{ resize:vertical }
     justify-content: flex-start;       /* lépe reaguje na posun doprava */
   }
   .map-box{
-    transform: translate(16px, -20px); /* +X = doprava, -Y = nahoru */
+    transform: translate(30px, -40px); /* +X = doprava, -Y = nahoru */
   }
 }
