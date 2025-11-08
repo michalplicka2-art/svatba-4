@@ -280,6 +280,36 @@ textarea{ resize:vertical }
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, background 0.3s ease;
 }
+/* --- Harmonogram se srdíčky --- */
+.timeline.hearts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.timeline.hearts .item {
+  width: min(500px, 90%);
+  padding: 16px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  color: #fff;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.timeline.hearts .item:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
 
 .timeline.simple .item:hover {
   background: rgba(255, 255, 255, 0.35);
