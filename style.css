@@ -214,3 +214,46 @@ textarea{ resize:vertical }
 .leaflet-container{
   background: transparent !important;
 }
+/* --- úprava vzhledu mapy v sekci Místo konání --- */
+
+/* Kontejner mapy */
+.map-box {
+  width: 400px;         /* můžeš upravit na 500px nebo 300px podle vzhledu */
+  height: 260px;        /* výška mapy */
+  border: none;         /* odstraní čtvercový rámeček */
+  background: transparent; /* žádné světlé pozadí */
+  overflow: hidden;
+  position: relative;
+  box-shadow: none;
+  transform: translate(30px, -25px);  /* posune mapu: +X = doprava, -Y = nahoru */
+}
+
+/* Samotná mapa (Leaflet) */
+#map.leaflet-host {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Schová šedé pozadí Leafletu, když se dlaždice načítají */
+.leaflet-container {
+  background: transparent !important;
+}
+
+/* Pro desktop – trochu víc doprava */
+@media (min-width: 900px) {
+  .map-box {
+    transform: translate(40px, -35px);
+  }
+}
+
+/* Pro menší zařízení – menší posun, aby to zůstalo pěkně vycentrované */
+@media (max-width: 899px) {
+  .map-box {
+    transform: translate(10px, -10px);
+    width: 100%;
+    height: 220px;
+  }
+}
