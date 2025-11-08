@@ -49,52 +49,44 @@ body{
 @media (min-width:900px){ .names{ font-size:112px } }
 
 /* bubliny */
-.intro-bubble{
-  display:inline-block;
-  background:var(--primary);
-  color:#fff;
-  padding:12px 22px;
-  border-radius:999px;
-  font-size:1.1rem;
-  font-weight:500;
-  max-width:90%;
-  text-align:center;
-  box-shadow:var(--shadow);
-  border:1px solid #2f6247;
-  margin-bottom:4px;
-}
-.countdown-bubble{
-  display:inline-flex; gap:14px;
-  background:var(--primary); color:#fff;
-  padding:10px 18px; border-radius:999px;
-  font-weight:600; font-size:18px;
-  box-shadow:var(--shadow); border:1px solid #2f6247;
-}
-.countdown-bubble span{ display:flex; align-items:baseline; gap:4px }
-.countdown-bubble span span{ font-size:22px; font-weight:800 }
-
-.chip{
-  display:inline-block; padding:10px 14px; border-radius:999px;
-  background:var(--chip); color:#204e37;
-  border:1px solid var(--ring); font-weight:600;
-}
-.chip--main{
-  background:var(--primary); color:#f6fffb;
-  border-color:transparent; box-shadow:var(--shadow);
+/* 🌸 Průhledné bílé bubliny v hero sekci (stejný tón jako jména) */
+.intro-bubble,
+.countdown-bubble,
+.chip--main,
+.btn.primary {
+  background: rgba(255, 255, 255, 0.22);  /* průhledná bílá */
+  color: #ffffff;                         /* bílý text jako jména */
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.3s ease, transform 0.15s ease;
 }
 
-.hero__nav{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
-
-/* tlačítka */
-.btn{
-  display:inline-block; padding:12px 18px; border-radius:12px;
-  border:1px solid #e5e7eb; text-decoration:none; color:#1f2937; background:#fff;
-  box-shadow:var(--shadow);
-  transition: all .15s ease;
+/* Hover efekt – lehce zvýrazní bubliny */
+.intro-bubble:hover,
+.countdown-bubble:hover,
+.chip--main:hover,
+.btn.primary:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
 }
-.btn.primary{ background:var(--primary); color:#fff; border-color:transparent }
-.btn:hover{ transform:translateY(-1px) }
-.btn.primary:hover{ filter:brightness(1.05); transform:translateY(-1px) }
+
+/* Tlačítka (bubliny pod jmény) – jemnější rámeček a padding */
+.btn.primary {
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Všechny ostatní bubliny mají sjednocený styl textu */
+.intro-bubble,
+.countdown-bubble,
+.chip--main {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
 
 /* ===== OBSAH POD HERO (stejné pozadí) ===== */
 .stack{
