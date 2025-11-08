@@ -49,31 +49,55 @@ body{
 @media (min-width:900px){ .names{ font-size:112px } }
 
 /* bubliny */
-/* 🌸 Průhledné bílé bubliny v hero sekci (stejný tón jako jména) */
+/* 🌿 Jednotný vzhled všech bublin v horní části (včetně tlačítek) */
 .intro-bubble,
 .countdown-bubble,
 .chip--main,
 .btn.primary {
-  background: rgba(255, 255, 255, 0.22);  /* průhledná bílá */
-  color: #ffffff;                         /* bílý text jako jména */
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.25);  /* průhledná bílá */
+  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 999px;                   /* oválná bublina */
+  padding: 12px 22px;                     /* stejný jako tlačítka */
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: background 0.3s ease, transform 0.15s ease;
 }
 
-/* Hover efekt – lehce zvýrazní bubliny */
+/* Hover efekt – jemné zesvětlení a posun */
 .intro-bubble:hover,
 .countdown-bubble:hover,
 .chip--main:hover,
 .btn.primary:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
 }
 
-/* Tlačítka (bubliny pod jmény) – jemnější rámeček a padding */
-.btn.primary {
+/* Bubliny mají mírný stín pro čitelnost textu */
+.intro-bubble,
+.countdown-bubble,
+.chip--main {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  font-size: 1.05rem;
+}
+
+/* Časové odpočítávání – zarovnáno do řádku */
+.countdown-bubble {
+  display: inline-flex;
+  gap: 16px;
+  align-items: baseline;
+  font-weight: 600;
+}
+.countdown-bubble span span {
+  font-size: 22px;
+  font-weight: 700;
+}
+
   padding: 12px 20px;
   border-radius: 999px;
   font-weight: 500;
