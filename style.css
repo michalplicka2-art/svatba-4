@@ -203,3 +203,14 @@ textarea{ resize:vertical }
     transform: translate(30px, -40px); /* +X = doprava, -Y = nahoru */
   }
 }
+/* schovat pozadí a rámeček okolo mapy */
+.map-box{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* schovat defaultní šedé pozadí samotné mapy (Leaflet) */
+.leaflet-container{
+  background: transparent !important;
+}
