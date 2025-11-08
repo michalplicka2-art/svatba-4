@@ -193,3 +193,13 @@ textarea{ resize:vertical }
   .names{ font-size:64px }
   .map-box{ width:100%; height:240px }
 }
+/* jemné posunutí mapy v dlaždici – jen na desktopu */
+@media (min-width: 900px){
+  .columns--place .col--map{ 
+    overflow: visible;                 /* kdyby přesahovala */
+    justify-content: flex-start;       /* lépe reaguje na posun doprava */
+  }
+  .map-box{
+    transform: translate(16px, -20px); /* +X = doprava, -Y = nahoru */
+  }
+}
