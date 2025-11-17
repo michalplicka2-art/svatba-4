@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jana & Michal – Svatba</title>
-  <meta name="description" content="Svatba Jany a Michala – Statek U nás, Okřesaneč. Místo, harmonogram, RSVP a rozvozy.">
+  <meta name="description" content="Svatba Jany a Michala – Statek U nás, Okřesaneč. Místo, obřad, dresscode, ubytování, dary, harmonogram, RSVP a rozvozy.">
 
   <!-- Fonty -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <!-- Leaflet (CSS + JS) -->
+  <!-- Leaflet (mapa) -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -34,12 +34,10 @@
     <div class="hero__head">
       <h1 class="names">Jana <span>&</span> Michal</h1>
 
-      <!-- Úvodní bublina -->
       <div class="bubble intro-bubble">
         Srdečně vás zveme, abyste s námi prožili náš velký den plný lásky, smíchu a tance 💚
       </div>
 
-      <!-- Odpočítávání -->
       <div class="bubble countdown-bubble" data-target="2026-05-30T12:00:00+02:00">
         <span><span id="dny">--</span> dní</span>
         <span><span id="hodiny">--</span> hod</span>
@@ -47,13 +45,14 @@
         <span><span id="vteriny">--</span> s</span>
       </div>
 
-      <!-- Datum a místo -->
-      <div class="bubble chip chip--main">30. května 2026 • 12:00 • Statek U nás, Okřesaneč</div>
+      <div class="bubble chip chip--main">
+        30. května 2026 • 12:00 • Statek U nás, Okřesaneč
+      </div>
     </div>
   </header>
 
   <main class="stack">
-    <!-- BLOK 1: Místo konání -->
+    <!-- MÍSTO KONÁNÍ -->
     <section id="blok-misto" class="block card">
       <div class="block__inner">
         <header class="block__head">
@@ -79,9 +78,88 @@
     </section>
 
     <section class="spacer" aria-hidden="true"></section>
-<section class="spacer" aria-hidden="true"></section>
 
-     <!-- BLOK 2: Harmonogram -->
+    <!-- OBŘAD -->
+    <section id="blok-obrad" class="block card">
+      <div class="block__inner">
+        <header class="block__head">
+          <h2>Obřad</h2>
+          <p class="lead">
+            <strong>Obřad začne ve 12:00, doporučujeme přijet už v 11:00.</strong>
+            Čekat na vás budou bublinky a něco dobrého k zakousnutí. 🍾
+          </p>
+        </header>
+      </div>
+    </section>
+
+    <section class="spacer" aria-hidden="true"></section>
+
+    <!-- DRESSCODE -->
+    <section id="blok-dresscode" class="block card">
+      <div class="block__inner">
+        <header class="block__head">
+          <h2>Dresscode</h2>
+        </header>
+
+        <div class="dresscode-text">
+          <p>
+            Přijďte prosím ve společenském oblečení. Na večerní party se pak klidně převlékněte do něčeho
+            pohodlnějšího, ať si ji můžete užít naplno.
+          </p>
+
+          <p>
+            • <strong>Dámy:</strong> tentokrát prosíme
+            <strong>vynechat bílou, černou a červenou</strong>.
+            Nezapomeňte, že se slaví na statku, takže pokud nechcete se skleničkou v ruce testovat svou stabilitu
+            na jehlách, doporučujeme zvolit pohodlnější obuv. 💅
+          </p>
+
+          <p>
+            • <strong>Pánové:</strong> oblek není povinností, ale ať je z vás pořád trochu ten společenský elegán. 🕺
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spacer" aria-hidden="true"></section>
+
+    <!-- UBYTOVÁNÍ -->
+    <section id="blok-ubytovani" class="block card">
+      <div class="block__inner">
+        <header class="block__head">
+          <h2>Ubytování</h2>
+        </header>
+
+        <div class="ubytovani-text">
+          <p>
+            Ubytování je možné přímo na statku.
+            Vyplňte prosím zájem o přespání v dotazníku a postel bude vaše! 🏡
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spacer" aria-hidden="true"></section>
+
+    <!-- DARY -->
+    <section id="blok-dary" class="block card">
+      <div class="block__inner">
+        <header class="block__head">
+          <h2>Dary</h2>
+        </header>
+
+        <div class="dary-text">
+          <p>
+            Nelamte si hlavu s dárkem, skleničky a otvírák na víno už máme.
+            Pokud byste nám i přesto chtěli udělat radost, potěší nás příspěvek do společné pokladničky.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spacer" aria-hidden="true"></section>
+
+    <!-- HARMONOGRAM -->
     <section id="blok-program" class="block card">
       <div class="block__inner">
         <header class="block__head">
@@ -98,116 +176,18 @@
     </section>
 
     <section class="spacer" aria-hidden="true"></section>
-    
-    
-<!-- BLOK: Obřad -->
-<section id="blok-obrad" class="block card">
-  <div class="block__inner">
-    <header class="block__head">
-      <h2>Obřad</h2>
-      <p class="lead">
-        <p class="lead">
-  <strong>Obřad začne ve 12:00, doporučujeme přijet už v 11:00.</strong>
-  Čekat na vás budou bublinky a něco dobrého k zakousnutí. 🍾
-      </p>
-    </header>
-  </div>
-</section>
 
-<section class="spacer" aria-hidden="true"></section>
-
-<!-- BLOK: Dresscode -->
-<section id="blok-dresscode" class="block card">
-  <div class="block__inner">
-    <header class="block__head">
-      <h2>Dresscode</h2>
-    </header>
-
-    <div class="dresscode-text">
-      <p>
-        Přijďte prosím ve společenském oblečení. Na večerní party se pak klidně převlékněte do něčeho pohodlnějšího,
-        ať si ji můžete užít naplno.
-      </p>
-
-      <p>
-        • <strong>Dámy:</strong> tentokrát prosíme <strong>vynechat bílou, černou a červenou</strong>.
-        Nezapomeňte, že se slaví na statku, takže pokud nechcete se skleničkou v ruce testovat svou stabilitu na jehlách,
-        doporučujeme zvolit pohodlnější obuv. 💅
-      </p>
-
-      <p>
-        • <strong>Pánové:</strong> oblek není povinností, ale ať je z vás pořád trochu ten společenský elegán. 🕺
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="spacer" aria-hidden="true"></section>
-
-
-<section class="spacer" aria-hidden="true"></section>
-    
-    <!-- BLOK: Ubytování -->
-<section id="blok-ubytovani" class="block card">
-  <div class="block__inner">
-    <header class="block__head">
-      <h2>Ubytování</h2>
-    </header>
-
-    <div class="ubytovani-text">
-      <p>🏡 Chcete zůstat přes noc? Super! Na statku je možnost přespání, stačí vyplnit zájem v dotazníku a postel je vaše. </p>
-    </div>
-  </div>
-</section>
-
-<section class="spacer" aria-hidden="true"></section>
-
-
-    <!-- BLOK 4: Doprava a rozvozy -->
-<section id="blok-doprava" class="block card">
-  <div class="block__inner">
-    <header class="block__head">
-      <h2>🚕 Doprava a rozvozy</h2>
-      <p class="lead">Ať se nestaráte o cestu domů</p>
-    </header>
-
-    <div class="rozvozy-text">
-      <p>
-        Večer bude k dispozici rozvoz po okolí, takže se nemusíte stresovat, jak se dostanete domů. Musíte nám ale slíbit, že s námi zůstanete co nejdéle🪩💃. Zájem o rozvoz prosím vyplňte v dotazníku.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="spacer" aria-hidden="true"></section>
-
-    <!-- BLOK: Dary -->
-<section id="blok-dary" class="block card">
-  <div class="block__inner">
-    <header class="block__head">
-      <h2>Dary</h2>
-    </header>
-
-    <div class="dary-text">
-      <p>
-        Nelamte si hlavu s dárkem, skleničky a otvírák na víno už máme.
-        Pokud byste nám i přesto chtěli udělat radost, potěší nás příspěvek do společné pokladničky.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="spacer" aria-hidden="true"></section>
-
-  <!-- BLOK 3: RSVP -->
+    <!-- RSVP -->
     <section id="blok-rsvp" class="block card">
       <div class="block__inner">
         <header class="block__head">
           <h2>Potvrzení účasti (RSVP)</h2>
         </header>
 
+        <div class="bubble bubble--soft note-whatsapp">
           Máme společnou fotku? Budeme rádi, když nám ji pošlete přes WhatsApp 🙏
           <!-- nahraďte číslo bez mezer a bez + -->
+          <a href="https://wa.me/420777000000" target="_blank" rel="noreferrer" class="wa">Odeslat na WhatsApp</a>
         </div>
 
         <form id="rsvp-form" class="form" action="/api/rsvp" method="post">
@@ -255,7 +235,35 @@
 
     <section class="spacer" aria-hidden="true"></section>
 
-    
+    <!-- DOPRAVA A ROZVOZY -->
+    <section id="blok-doprava" class="block card">
+      <div class="block__inner">
+        <header class="block__head">
+          <h2>🚕 Doprava a rozvozy</h2>
+          <p class="lead">Ať se nestaráte o cestu domů</p>
+        </header>
+
+        <div class="rozvozy-text">
+          <p>
+            Ať se nestaráte o to, jak se dostanete zpět domů, bude od <strong>20:00</strong> k dispozici rozvoz po okolí.
+            Budeme ale rádi, když s námi strávíte co nejvíce času a užijete si večer naplno.
+          </p>
+
+          <p>
+            Vyplňte prosím zájem o taxi v dotazníku.
+            Číslo na taxi <em>doplníme později</em>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spacer" aria-hidden="true"></section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Jana &amp; Michal — Svatba na statku v Okřesanči</p>
+  </footer>
+
   <!-- Odpočítávání -->
   <script>
     function initCountdown(){
@@ -292,12 +300,17 @@
       const mapEl = document.getElementById('map');
       if (!mapEl) return;
 
-      const map = L.map(mapEl, { zoomControl: true, attributionControl: false });
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+      const map = L.map(mapEl, {
+        zoomControl: true,
+        attributionControl: false
+      });
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+      }).addTo(map);
 
       map.setView([lat, lon], 15);
-      // jemné složení kompozice: trochu doprava a nahoru
-      map.panBy([+30, -20]);
+      map.panBy([30, -20]);
       setTimeout(() => map.invalidateSize(), 300);
     });
   </script>
