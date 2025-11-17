@@ -184,3 +184,21 @@ textarea{ resize:vertical }
 #blok-doprava .rozvozy-text em {
   color: #444;
 }
+/* všechen text v dlaždicích zarovnán vlevo */
+#blok-ubytovani .ubytovani-text,
+#blok-dary .dary-text,
+#blok-dresscode .dresscode-text,
+#blok-doprava .rozvozy-text {
+  text-align: left;
+}
+
+/* harmonogram – text v bublinách také doleva */
+.timeline.hearts .item{
+  text-align: left;
+}
+
+/* bublina s WhatsApp uvnitř RSVP karty – taky doleva */
+#blok-rsvp .bubble{
+  text-align: left;
+  display: block;
+}
