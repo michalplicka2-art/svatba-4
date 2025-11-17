@@ -6,7 +6,6 @@
   --text:#2b2f33;
   --muted:#6b7280;
 
-  /* bílá „glass“ bublina */
   --bubble-bg: rgba(255,255,255,.24);
   --bubble-bg-hover: rgba(255,255,255,.36);
   --bubble-brd: rgba(255,255,255,.4);
@@ -30,10 +29,15 @@ body{
   display:grid; place-items:center;
   background:var(--hero-bg) center/cover no-repeat fixed;
 }
-.hero__overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.52),rgba(0,0,0,.28)) }
+.hero__overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.52),rgba(0,0,0,.28));
+}
 .hero__head{
-  position:relative; z-index:1; text-align:center; color:#fff;
-  padding:24px 16px; display:flex; flex-direction:column; align-items:center; gap:12px;
+  position:relative; z-index:1;
+  text-align:center; color:#fff;
+  padding:24px 16px;
+  display:flex; flex-direction:column; align-items:center; gap:12px;
 }
 .names{
   font-family:'Great Vibes',cursive;
@@ -42,7 +46,7 @@ body{
 }
 @media (min-width:900px){ .names{ font-size:112px } }
 
-/* sjednocené bubliny (intro, countdown, chip, info boxy) */
+/* bubliny v hero + obecný glass styl */
 .bubble{
   display:inline-block;
   background: var(--bubble-bg);
@@ -58,17 +62,20 @@ body{
   transition: background .3s ease, transform .15s ease;
   text-shadow: 0 1px 3px rgba(0,0,0,.3);
 }
-.bubble:hover{ background:var(--bubble-bg-hover); transform: translateY(-1px) }
+.bubble:hover{
+  background:var(--bubble-bg-hover);
+  transform: translateY(-1px);
+}
 
 .countdown-bubble{
   display:inline-flex; gap:16px; align-items:baseline; font-weight:600;
 }
-.countdown-bubble span span{ font-size:22px; font-weight:700 }
-
+.countdown-bubble span span{
+  font-size:22px; font-weight:700;
+}
 .chip{ font-weight:600 }
-.chip--main{}
 
-/* volnější skleněná „bublina“ (notifikace v RSVP) */
+/* jemnější bublina uvnitř karet (WhatsApp) */
 .bubble--soft{
   display:block;
   border-radius:16px;
@@ -77,61 +84,97 @@ body{
 }
 
 /* =============== OBSAH =============== */
-.stack{ background:var(--hero-bg) center/cover no-repeat fixed }
-
-.block {
-  min-height: 90vh;
-  display: grid;
-  place-items: center;
-  padding: 40px 16px;
+.stack{
+  background:var(--hero-bg) center/cover no-repeat fixed;
 }
 
-.card {
+.block{
+  min-height:90vh;
+  display:grid; place-items:center;
+  padding:40px 16px;
+}
+.card{
   backdrop-filter: blur(6px);
   background: rgba(255,255,255,.88);
-  border: 1px solid #e9ece8;
-  border-radius: 22px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.18);
-}
-
+  border:1px solid #e9ece8;
+  border-radius:22px;
+  box-shadow: var(--shadow);
 }
 .block__inner{
   width:min(1100px,94vw);
   padding:24px;
-  text-align: left;   /* 🔹 nové – všechno v kartách doleva */
+  text-align:left;     /* 👉 všechno uvnitř dlaždic zarovnáno vlevo */
 }
 .block__head{ margin-bottom:18px }
-h2{ font-family:"Playfair Display",serif; font-size:34px; margin:0 0 8px }
-.lead{ color:var(--muted); max-width:720px; margin:0 }
+h2{
+  font-family:"Playfair Display",serif;
+  font-size:34px;
+  margin:0 0 8px;
+}
+.lead{
+  color:var(--muted);
+  max-width:720px;
+  margin:0;
+}
 .spacer{ min-height:26vh }
 
 /* =============== MÍSTO KONÁNÍ =============== */
-.columns{ display:grid; gap:18px; grid-template-columns:1fr }
+.columns{
+  display:grid;
+  gap:18px;
+  grid-template-columns:1fr;
+}
 .columns--place{ align-items:start }
 @media (min-width:900px){
   .columns--place{ grid-template-columns:1.3fr .7fr }
 }
-.address{ color:var(--muted); margin-top:-4px }
-
-.col--map{ display:flex; justify-content:center; overflow:visible }
-.map-box{
-  width:400px; height:260px;
-  border:none; background:transparent; overflow:hidden; position:relative; box-shadow:none;
-  transform: translate(40px, -35px);      /* posun doprava / nahoru */
-  border-radius:16px;                      /* estetické zaoblení výřezu */
+.address{
+  color:var(--muted);
+  margin-top:-4px;
 }
-#map.leaflet-host{ position:absolute; inset:0; width:100%; height:100%; z-index:0 }
-.leaflet-container{ background:transparent !important }
+.col--map{
+  display:flex;
+  justify-content:center;
+  overflow:visible;
+}
+.map-box{
+  width:400px;
+  height:260px;
+  border:none;
+  background:transparent;
+  overflow:hidden;
+  position:relative;
+  box-shadow:none;
+  transform: translate(40px, -35px); /* posun doprava/nahoru */
+  border-radius:16px;
+}
+#map.leaflet-host{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
+.leaflet-container{
+  background:transparent !important;
+}
 @media (max-width:899px){
-  .map-box{ transform: translate(10px,-10px); width:100%; height:220px }
+  .map-box{
+    transform: translate(10px,-10px);
+    width:100%;
+    height:220px;
+  }
 }
 
 /* =============== HARMONOGRAM =============== */
 .timeline.hearts{
-  display:flex; flex-direction:column; gap:16px; margin-top:24px; align-items:center;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  margin-top:24px;
 }
 .timeline.hearts .item{
-  width:min(500px,90%);
+  width:min(500px,100%);
   padding:16px 24px;
   border-radius:20px;
   background: rgba(255,255,255,.25);
@@ -139,66 +182,118 @@ h2{ font-family:"Playfair Display",serif; font-size:34px; margin:0 0 8px }
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 8px 20px rgba(0,0,0,.15);
-  color:#000;
-text-shadow:none;
-; text-align:center; font-size:1.3rem; font-weight:600;
-  text-shadow:0 1px 3px rgba(0,0,0,.4);
+  color:#000;              /* černý text */
+  text-align:left;         /* zarovnání vlevo */
+  font-size:1.3rem;
+  font-weight:600;
+  text-shadow:none;
   transition: background .3s ease, transform .2s ease;
 }
-.timeline.hearts .item:hover{ background:rgba(255,255,255,.35); transform:translateY(-3px) }
+.timeline.hearts .item:hover{
+  background:rgba(255,255,255,.35);
+  transform:translateY(-3px);
+}
 
 /* =============== FORMULÁŘ RSVP =============== */
-.form{ display:grid; gap:12px; margin-top:8px }
-.form__row{ display:flex; flex-direction:column; gap:6px }
+.form{
+  display:grid;
+  gap:12px;
+  margin-top:8px;
+}
+.form__row{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
 .form__row--full{ grid-column:1/-1 }
 input,textarea{
-  padding:12px; border:1px solid #e5e7eb;
-  border-radius:12px; font:inherit; background:#fff
+  padding:12px;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  font:inherit;
+  background:#fff;
 }
 textarea{ resize:vertical }
-.radio-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:center }
-.form__msg{ margin:6px 0 0; font-size:14px }
+.radio-row{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.form__msg{
+  margin:6px 0 0;
+  font-size:14px;
+}
 .form__msg.ok{ color:#166534 }
 .form__msg.err{ color:#b91c1c }
-.wa{ color:#fff; font-weight:700; text-decoration:underline }
-.inlink{ color:#2b2f33; font-weight:600 }
+
+/* bublina v RSVP doleva */
+#blok-rsvp .bubble{
+  text-align:left;
+}
+
+/* tlačítko odeslat */
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  border:1px solid #e5e7eb;
+  text-decoration:none;
+  color:#1f2937;
+  background:#fff;
+  box-shadow:var(--shadow);
+  transition: all .15s ease;
+}
+.btn.primary{
+  background:var(--bubble-bg);
+  color:#fff;
+  border-color:var(--bubble-brd);
+}
+.btn.primary:hover{
+  background:var(--bubble-bg-hover);
+  transform:translateY(-1px);
+}
+
+/* odkazy uvnitř textu */
+.wa{
+  color:#1f2937;
+  font-weight:700;
+  text-decoration:underline;
+}
+.inlink{
+  color:#1f2937;
+  font-weight:600;
+}
+
+/* =============== DRESSCODE / UBYTOVÁNÍ / DARY / ROZVOZY =============== */
+#blok-dresscode .dresscode-text,
+#blok-ubytovani .ubytovani-text,
+#blok-dary .dary-text,
+#blok-doprava .rozvozy-text{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  font-size:1.05rem;
+  line-height:1.7;
+  color:#1a1a1a;
+  text-align:left;        /* důraz: vše vlevo */
+}
+#blok-dresscode .dresscode-text p,
+#blok-ubytovani .ubytovani-text p,
+#blok-dary .dary-text p,
+#blok-doprava .rozvozy-text p{
+  margin:0;
+}
 
 /* =============== PATIČKA =============== */
 .footer{
-  color:#e2e8f0; background:#0f172a; text-align:center; padding:28px 16px;
+  color:#e2e8f0;
+  background:#0f172a;
+  text-align:center;
+  padding:28px 16px;
 }
 
 /* drobné úpravy pro malé displeje */
 @media (max-width:380px){
   .names{ font-size:64px }
-}
-/* --- ROZVOZY --- */
-#blok-doprava .rozvozy-text {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #1a1a1a;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-#blok-doprava .rozvozy-text em {
-  color: #444;
-}
-/* všechen text v dlaždicích zarovnán vlevo */
-#blok-ubytovani .ubytovani-text,
-#blok-dary .dary-text,
-#blok-dresscode .dresscode-text,
-#blok-doprava .rozvozy-text {
-  text-align: left;
-}
-
-/* harmonogram – text v bublinách také doleva */
-.timeline.hearts .item{
-  text-align: left;
-}
-
-/* bublina s WhatsApp uvnitř RSVP karty – taky doleva */
-#blok-rsvp .bubble{
-  text-align: left;
-  display: block;
 }
