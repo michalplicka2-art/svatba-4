@@ -118,6 +118,10 @@ h2{
 }
 .spacer{ min-height:26vh }
 
+/* seznam */
+.list{ padding-left:18px; margin:8px 0 0 }
+.list li{ margin-bottom:4px }
+
 /* =============== MÍSTO KONÁNÍ =============== */
 .columns{
   display:grid;
@@ -276,7 +280,7 @@ textarea{ resize:vertical }
   font-size:1.05rem;
   line-height:1.7;
   color:#1a1a1a;
-  text-align:left;        /* důraz: vše vlevo */
+  text-align:left;
 }
 #blok-dresscode .dresscode-text p,
 #blok-ubytovani .ubytovani-text p,
