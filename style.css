@@ -301,3 +301,12 @@ textarea{ resize:vertical }
 @media (max-width:380px){
   .names{ font-size:64px }
 }
+/* RSVP WhatsApp box – čitelný na bílé dlaždici */
+#blok-rsvp .note-whatsapp{
+  color: #111 !important;
+  text-shadow: none !important;
+}
+
+#blok-rsvp .note-whatsapp .wa{
+  color: #111 !important;
+}
