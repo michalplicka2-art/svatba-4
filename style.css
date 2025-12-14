@@ -339,6 +339,3 @@ textarea{ resize:vertical }
 #blok-rsvp .note-whatsapp .wa{
   color: #111 !important;
 }
-#blok-ubytovani .block__inner{
-  width: min(600px, 94vw);
-}
