@@ -307,6 +307,35 @@ textarea{ resize:vertical }
   text-shadow: none !important;
 }
 
+/* RSVP – výraznější tlačítko Odeslat (jen v této dlaždici) */
+#blok-rsvp .btn.primary{
+  background: #111 !important;
+  border-color: #111 !important;
+  color: #fff !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,.22) !important;
+}
+
+#blok-rsvp .btn.primary:hover{
+  background: #000 !important;
+  border-color: #000 !important;
+  transform: translateY(-1px);
+}
+
+/* volitelně: větší “hit area” */
+#blok-rsvp .btn.primary{
+  padding: 14px 22px;
+  font-weight: 700;
+}
+
+/* volitelně: na mobilu přes celou šířku */
+@media (max-width: 600px){
+  #blok-rsvp .btn.primary{
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
 #blok-rsvp .note-whatsapp .wa{
   color: #111 !important;
 }
