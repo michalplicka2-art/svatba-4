@@ -334,13 +334,14 @@ textarea{ resize:vertical }
     text-align: center;
   }
 }
-/* KOMPAKTNÍ dlaždice – například Ubytování */
-#blok-ubytovani.block{
-  min-height: auto;      /* zruší natažení na 90vh */
-  padding: 24px 16px;    /* menší vnější odsazení */
-}
-
 
 #blok-rsvp .note-whatsapp .wa{
   color: #111 !important;
+}
+/* KOMPAKTNÍ dlaždice – obřad, ubytování, dary */
+#blok-obrad.block,
+#blok-ubytovani.block,
+#blok-dary.block{
+  min-height: auto;      /* zruší natažení na 90vh */
+  padding: 24px 16px;    /* menší vnější odsazení */
 }
