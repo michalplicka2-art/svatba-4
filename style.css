@@ -345,3 +345,8 @@ textarea{ resize:vertical }
   min-height: auto;      /* zruší natažení na 90vh */
   padding: 24px 16px;    /* menší vnější odsazení */
 }
+
+/* Obřad – nechceme šedý "lead", ale černý text jako v ostatních blocích */
+#blok-obrad .lead{
+  color: #1a1a1a;
+}
