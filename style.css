@@ -123,25 +123,49 @@ h2{
 .list li{ margin-bottom:4px }
 
 /* =============== MÍSTO KONÁNÍ =============== */
-.columns{
+#blok-misto .columns{
   display:grid;
   gap:18px;
   grid-template-columns:1fr;
+  align-items:start;
 }
-.columns--place{ align-items:start }
+
 @media (min-width:900px){
-  .columns--place{ grid-template-columns:1.3fr .7fr }
+  #blok-misto .columns--place{
+    grid-template-columns:1.3fr .7fr;
+  }
 }
-.address{
-  color:#1a1a1a;
+
+#blok-misto .address{
+  color:#1a1a1a;        /* černě, ne šedě */
   margin-top:-4px;
+  margin-bottom: 10px;
 }
-.col--map{
+
+#blok-misto .list{
+  padding-left:18px;
+  margin: 0;
+}
+
+#blok-misto .list li{
+  margin-bottom:4px;
+}
+
+#blok-misto .nav-tip{
+  margin: 10px 0 0;     /* pod parkováním */
+  color:#1a1a1a;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* mapa */
+#blok-misto .col--map{
   display:flex;
   justify-content:center;
   overflow:visible;
 }
-.map-box{
+
+#blok-misto .map-box{
   width:400px;
   height:260px;
   border:none;
@@ -149,26 +173,33 @@ h2{
   overflow:hidden;
   position:relative;
   box-shadow:none;
-  transform: translate(40px, -35px); /* posun doprava/nahoru */
   border-radius:16px;
+
+  /* posun mapy: více doprava a lehce výš */
+  transform: translate(80px, -35px);
 }
-#map.leaflet-host{
+
+#blok-misto #map.leaflet-host{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   z-index:0;
 }
+
+/* aby se neukazovalo "bílé pozadí" Leafletu při načítání */
 .leaflet-container{
   background:transparent !important;
 }
+
 @media (max-width:899px){
-  .map-box{
-    transform: translate(10px,-10px);
+  #blok-misto .map-box{
+    transform: translate(10px, -10px);
     width:100%;
     height:220px;
   }
 }
+
 
 /* =============== HARMONOGRAM =============== */
 .timeline.hearts{
