@@ -124,70 +124,86 @@ h2{
 
 /* =============== MÍSTO KONÁNÍ =============== */
 #blok-misto .columns{
-  display:grid;
-  gap:18px;
-  grid-template-columns:1fr;
-  align-items:start;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+  align-items: start;
 }
 
-@media (min-width:900px){
+@media (min-width: 900px){
   #blok-misto .columns--place{
-    grid-template-columns:1.3fr .7fr;
+    grid-template-columns: 1.3fr 0.7fr;
   }
 }
 
+/* aby se text nikdy "neztratil" pod mapou */
+#blok-misto .col--text{
+  position: relative;
+  z-index: 2;
+}
+
 #blok-misto .address{
-  color:#1a1a1a;        /* černě, ne šedě */
-  margin-top:-4px;
+  color: #1a1a1a;
+  margin-top: -4px;
   margin-bottom: 10px;
 }
 
 #blok-misto .list{
-  padding-left:18px;
+  padding-left: 18px;
   margin: 0;
 }
 
 #blok-misto .list li{
-  margin-bottom:4px;
+  margin-bottom: 4px;
 }
 
 #blok-misto .nav-tip{
-  margin: 10px 0 0;     /* pod parkováním */
-  color:#1a1a1a;
+  margin: 10px 0 0;
+  color: #1a1a1a;
   font-size: 1rem;
   line-height: 1.6;
 }
 
 /* mapa */
 #blok-misto .col--map{
-  display:flex;
-  justify-content:center;
-  overflow:visible;
-}
-#blok-misto .map-box{
-  ...
-  transform: translate(80px, -35px);
+  display: flex;
+  justify-content: flex-end;  /* mapa víc doprava bez překryvu */
+  position: relative;
+  z-index: 1;
 }
 
+#blok-misto .map-box{
+  width: 400px;
+  height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+
+  /* posun doprava (pokud chceš ještě víc, zvyš první číslo) */
+  transform: translate(60px, -20px);
+}
 
 #blok-misto #map.leaflet-host{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-/* aby se neukazovalo "bílé pozadí" Leafletu při načítání */
+/* Leaflet background */
 .leaflet-container{
-  background:transparent !important;
+  background: transparent !important;
 }
 
-@media (max-width:899px){
+/* mobil */
+@media (max-width: 899px){
+  #blok-misto .col--map{
+    justify-content: center;
+  }
   #blok-misto .map-box{
-    transform: translate(10px, -10px);
-    width:100%;
-    height:220px;
+    width: 100%;
+    height: 220px;
+    transform: translate(0, 0);
   }
 }
 
