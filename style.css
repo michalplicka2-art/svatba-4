@@ -164,20 +164,11 @@ h2{
   justify-content:center;
   overflow:visible;
 }
-
 #blok-misto .map-box{
-  width:400px;
-  height:260px;
-  border:none;
-  background:transparent;
-  overflow:hidden;
-  position:relative;
-  box-shadow:none;
-  border-radius:16px;
-
-  /* posun mapy: více doprava a lehce výš */
-  transform: translate(210px, -35px);
+  ...
+  transform: translate(80px, -35px);
 }
+
 
 #blok-misto #map.leaflet-host{
   position:absolute;
