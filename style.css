@@ -176,7 +176,7 @@ h2{
   border-radius:16px;
 
   /* posun mapy: více doprava a lehce výš */
-  transform: translate(110px, -35px);
+  transform: translate(210px, -35px);
 }
 
 #blok-misto #map.leaflet-host{
