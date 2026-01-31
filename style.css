@@ -116,7 +116,7 @@ h2{
   max-width:720px;
   margin:0;
 }
-.spacer{ min-height:26vh }
+.spacer{ min-height:10vh }
 
 /* seznam */
 .list{ padding-left:18px; margin:8px 0 0 }
