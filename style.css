@@ -350,3 +350,31 @@ textarea{ resize:vertical }
 #blok-obrad .lead{
   color: #1a1a1a;
 }
+/* KOMPAKTNÍ dlaždice – Místo, Harmonogram, Rozvozy */
+#blok-misto.block,
+#blok-program.block,
+#blok-doprava.block{
+  min-height: auto;      /* zruší 90vh */
+  padding: 24px 16px;    /* menší vnější odsazení (výška sekce) */
+}
+
+/* ještě o trochu menší vnitřní padding (ať karta není „nafouklá“) */
+#blok-misto .block__inner,
+#blok-program .block__inner,
+#blok-doprava .block__inner{
+  padding: 18px;
+}
+
+/* Harmonogram – menší mezery a menší bubliny, ať to není vysoké */
+#blok-program .timeline.hearts{
+  margin-top: 14px;
+  gap: 12px;
+}
+#blok-program .timeline.hearts .item{
+  padding: 12px 18px;
+}
+
+/* Rozvozy – trochu menší mezera mezi odstavci */
+#blok-doprava .rozvozy-text{
+  gap: 8px;
+}
