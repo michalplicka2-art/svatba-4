@@ -53,23 +53,37 @@
 
   <main class="stack">
     <!-- 1) MÍSTO KONÁNÍ -->
-    <section id="blok-misto" class="block card">
-      <div class="block__inner">
-        <header class="block__head">
-          <h2>Místo konání</h2>
-        </header>
+<section id="blok-misto" class="block card">
+  <div class="block__inner">
+    <header class="block__head">
+      <h2>Místo konání</h2>
+    </header>
 
-        <div class="columns columns--place">
-          <div class="col col--text">
-            <p><strong>Statek U nás</strong></p>
-            <p class="address">Okřesaneč 12, Okřesaneč</p>
-            <ul class="list">
-  <li>Parkování: přímo u statku.</li>
-</ul>
+    <div class="columns columns--place">
+      <!-- LEVÝ SLOUPEC: TEXT -->
+      <div class="col col--text">
+        <p><strong>Statek U nás</strong></p>
+        <p class="address">Okřesaneč 12, Okřesaneč</p>
 
-<p class="nav-tip">
-  Doporučujeme zadat do Google Maps/Mapy.cz/Waze přímo název "Statek U nás", ne adresu.
-</p>
+        <ul class="list">
+          <li>Parkování: přímo u statku.</li>
+        </ul>
+
+        <p class="nav-tip">
+          Doporučujeme zadat do Google Maps/Mapy.cz/Waze přímo název "Statek U nás", ne adresu.
+        </p>
+      </div>
+
+      <!-- PRAVÝ SLOUPEC: MAPA -->
+      <div class="col col--map">
+        <div class="map-box">
+          <div id="map" class="leaflet-host"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
           <div class="col col--map">
             <div class="map-clean map-box">
               <div id="map" class="leaflet-host"></div>
