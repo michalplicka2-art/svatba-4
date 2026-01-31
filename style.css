@@ -133,7 +133,7 @@ h2{
   .columns--place{ grid-template-columns:1.3fr .7fr }
 }
 .address{
-  color:var(--muted);
+  color:#1a1a1a;
   margin-top:-4px;
 }
 .col--map{
@@ -377,4 +377,11 @@ textarea{ resize:vertical }
 /* Rozvozy – trochu menší mezera mezi odstavci */
 #blok-doprava .rozvozy-text{
   gap: 8px;
+}
+/* Bublina v Místo konání – černý text na bílé kartě */
+#blok-misto .place-tip{
+  color:#1a1a1a;
+  text-shadow:none;
+  background: rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.08);
 }
